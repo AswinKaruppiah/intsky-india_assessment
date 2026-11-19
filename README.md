@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Starter Data
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You are given one mock data file for this challenge.
 
-## Available Scripts
+## File
 
-In the project directory, you can run:
+**`airports.json`** — 34 Indian airports.
 
-### `npm start`
+## Placement
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Place this file where your framework serves static files:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Angular**: `src/assets/airports.json` — fetch from `/assets/airports.json`
+- **React (CRA / Vite)**: `public/airports.json` — fetch from `/airports.json`
+- **Vanilla**: anywhere alongside your `index.html` — fetch from `./airports.json`
 
-### `npm test`
+## Data shape
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```ts
+interface Airport {
+  code: string;     // IATA code, e.g. "DEL"
+  city: string;     // "Delhi"
+  country: string;  // "India"
+  name: string;     // Full airport name
+}
+```
 
-### `npm run build`
+## Sample
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```json
+{ "code": "DEL", "city": "Delhi", "country": "India", "name": "Indira Gandhi International Airport" }
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Rules
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Load this file at runtime via `fetch` (or `HttpClient` in Angular).
+- Do **not** import it statically (no `import airports from './airports.json'`).
+- Do **not** copy-paste the contents into a TypeScript or JavaScript module.
+- Do **not** modify the file.
