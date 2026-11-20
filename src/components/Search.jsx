@@ -21,12 +21,35 @@ export function Search() {
     setIsOpen(false);
   }
 
-  console.log(focusedIndex);
-
   function handleKeyDown(e) {
     const totalItems = data?.length ?? 0;
 
     switch (e.key) {
+      case "ArrowUp": {
+        e.preventDefault();
+        if (!totalItems) return;
+
+        setFocusedIndex((pre) => {
+          if (pre === null) {
+            return totalItems - 1;
+          }
+          return pre <= 0 ? pre : pre - 1;
+        });
+        break;
+      }
+
+      case "ArrowDown": {
+        e.preventDefault();
+        if (!totalItems) return;
+        setFocusedIndex((pre) => {
+          if (pre === null) {
+            return 0;
+          }
+          return pre < totalItems - 1 ? pre + 1 : pre;
+        });
+        break;
+      }
+
       case "Enter": {
         if (!totalItems) return;
 
@@ -62,6 +85,7 @@ export function Search() {
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
+            setFocusedIndex(null);
           }}
           onFocus={() => {
             setIsOpen(true);
