@@ -1,6 +1,6 @@
 import { useDebounce } from "../hooks/useDebounce";
 import { useSearch } from "../hooks/useSearch";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export function Search() {
   const [query, setQuery] = useState("");
